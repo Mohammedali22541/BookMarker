@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark</title>
+    <meta name="author" content="Mohammed Ali" />
+
+    <!--& ========== Start Site Icon ========== -->
+    <link
+      rel="shortcut icon"
+      href="./images/bookmark.ico"
+      type="image/x-icon"
+    />
+    <!--& ========== End Site Icon ========== -->
+    <!--& ========== Start Google Fonts ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <!--& ========== End Google Fonts ========== -->
+    <!--& ========== Start Font Awesome Css ========== -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!--& ========== End Font Awesome Css ========== -->
+    <!--& ========== Start Bootstrab Css ========== -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!--& ========== End Bootstrab Css ========== -->
+    <!--& ========== Start Main Css ========== -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!--& ========== End Main Css ========== -->
+  </head>
+  <body>
+    <main class="py-5">
+      <div class="maintitle text-center py-2">
+        <h1>Bookmarker</h1>
+      </div>
+      <section class="bookmark-section pt-5">
+        <div class="container position-relative pt-4 px-4 myborder">
+          <div class="second-title text-center pb-4">
+            <h2>
+              <span><i class="fa-solid fa-bookmark"></i></span>
+              Bookmark your favorite sites
+              <span><i class="fa-solid fa-bookmark"></i></span>
+            </h2>
+          </div>
+          <div class="site-name">
+            <label for="siteName">
+              <span><i class="fa-solid fa-book-bookmark pe-2"></i></span>
+              Site Name
+            </label>
+            <input
+              type="text"
+              name=""
+              oninput="validName()"
+              id="siteName"
+              class="form-control mt-2"
+              placeholder="Bookmark Name"
+            />
+          </div>
+          <div class="site-url mt-4">
+            <label for="siteUrl">
+              <span><i class="fa-solid fa-link pe-2"></i></span>
+              Site Name
+            </label>
+            <input
+              type="text"
+              name=""
+              oninput="validUrl()"
+              id="siteUrl"
+              class="form-control mt-2"
+              placeholder="Website URL"
+            />
+          </div>
+          <div class="text-center">
+            <button id="addBtn" class="btn btn-danger mt-4 px-5">Submit</button>
+
+            <div id="modal"></div>
+          </div>
+        </div>
+      </section>
+      <div class="table-responsive mt-5 pt-2">
+        <div class="container text-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Website Name</th>
+                <th>Visit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="invalid-input-container d-none">
+        <div class="box p-4 rounded-2 shadow-lg">
+          <div
+            class="header d-flex justify-content-between align-items-center mb-2"
+          >
+            <div class="icons">
+              <h1 class="modal-title fs-5 fw-bold">
+                <span class="text-danger me-1"
+                  ><i class="fa-solid fa-circle"></i
+                ></span>
+                <span class="text-warning me-1"
+                  ><i class="fa-solid fa-circle"></i
+                ></span>
+                <span class="text-success me-1"
+                  ><i class="fa-solid fa-circle"></i
+                ></span>
+              </h1>
+            </div>
+            <div class="close">
+              <span id="closeBtn"><i class="fa-solid fa-xmark fs-3"></i></span>
+            </div>
+          </div>
+          <div class="modal-body pt-4">
+            <h3>
+              Site Name or Url is not valid, Please follow the rules below :
+            </h3>
+            <div class="px-2">
+              <p>
+                <span class="text-danger pe-1"
+                  ><i class="fa-regular fa-circle-right"></i
+                ></span>
+                Site name must contain at least 3 characters
+              </p>
+              <p>
+                <span class="text-danger pe-1"
+                  ><i class="fa-regular fa-circle-right"></i
+                ></span>
+
+                Site URL must be a valid one
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!--^ ========== Start BootStrap Js ========== -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!--^ ========== End BootStrap Js ========== -->
+    <!--^ ========== Start Main Js ========== -->
+    <script src="./js/MainJs.js"></script>
+    <!--^ ========== End Main Js ========== -->
+  </body>
+</html>
